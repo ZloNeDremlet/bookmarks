@@ -5,6 +5,8 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Bookmark;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMInvalidArgumentException;
 
 /**
  * Class BookmarkManager
@@ -25,13 +27,20 @@ class BookmarkManager
     /**
      * @param int $limit
      *
-     * @return $array
+     * @return array
      */
     public function getLastBookmarks(?int $limit = 10): array
     {
         return $this->em->getRepository(Bookmark::class)->findBy([],['createdAt' => 'DESC'], $limit);
     }
 
+    /**
+     * @param Bookmark $bookmark
+     * @return Bookmark
+     *
+     * @throws OptimisticLockException
+     * @throws ORMInvalidArgumentException
+     */
     public function create(Bookmark $bookmark)
     {
         $bookmarkOld = $this->em->getRepository(Bookmark::class)->findOneBy(['url' => $bookmark->getUrl()]);
