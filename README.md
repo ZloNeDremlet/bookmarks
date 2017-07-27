@@ -12,7 +12,7 @@ composer install
 ## `Usage`
 
 ### `Run migrations`
-bin/console d:m:M
+bin/console doctrine:migrations:migrate
 
 ### `Run server`
 bin/console server:run
