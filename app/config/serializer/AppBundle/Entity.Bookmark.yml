@@ -1,0 +1,11 @@
+AppBundle\Entity\Bookmark:
+    exclusion_policy: ALL
+    properties:
+        id:
+            groups: ['bookmark_list' , 'bookmark_show']
+        url:
+            groups: ['bookmark_list', 'bookmark_show']
+        createdAt:
+            groups: ['bookmark_list', 'bookmark_show']
+        comments:
+            groups: ['bookmark_show']

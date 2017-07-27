@@ -1,0 +1,3 @@
+api_faq:
+    resource: AppBundle\Controller\BookmarkApiController
+    type: rest

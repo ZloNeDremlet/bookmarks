@@ -1,0 +1,11 @@
+services:
+    bookmark.manager:
+        class: AppBundle\Service\BookmarkManager
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+
+    comment.manager:
+           class: AppBundle\Service\CommentManager
+           arguments:
+               - '@doctrine.orm.default_entity_manager'
+

@@ -1,0 +1,11 @@
+AppBundle\Entity\Comment:
+    exclusion_policy: ALL
+    properties:
+        id:
+            groups: ['bookmark_show', 'comment_show']
+        createdAt:
+            groups: ['bookmark_show']
+        ipAddress:
+            groups: ['bookmark_show']
+        text:
+            groups: ['bookmark_show']
