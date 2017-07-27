@@ -9,6 +9,10 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class BookmarkType
+ * @package AppBundle\Form
+ */
 class BookmarkType extends AbstractType
 {
     /**

@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CommentType
+ * @package AppBundle\Form
+ */
 class CommentType extends AbstractType
 {
     /**

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zlo
- * Date: 26.07.17
- * Time: 21:22
- */
 
 namespace AppBundle\Service;
 
@@ -12,6 +6,10 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Bookmark;
 use Doctrine\ORM\EntityManager;
 
+/**
+ * Class BookmarkManager
+ * @package AppBundle\Service
+ */
 class BookmarkManager
 {
     /**

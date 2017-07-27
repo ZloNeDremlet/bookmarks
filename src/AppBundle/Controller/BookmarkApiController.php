@@ -61,7 +61,7 @@ class BookmarkApiController extends FOSRestController
      *
      * @Rest\Get("")
      */
-    public function getBookmarksAction(Request $request) : Response
+    public function getBookmarksAction(Request $request): Response
     {
         $bookmarks = $this->get('bookmark.manager')->getLastBookmarks($request->get('limit'));
 
@@ -107,7 +107,7 @@ class BookmarkApiController extends FOSRestController
      *
      * @Rest\Post("")
      */
-    public function postBookmarkAction(Request $request) : Response
+    public function postBookmarkAction(Request $request): Response
     {
         $bookmark = new Bookmark();
         $form = $this->createForm(BookmarkType::class, $bookmark);
@@ -123,10 +123,10 @@ class BookmarkApiController extends FOSRestController
 
         $bookmark = $this->get('bookmark.manager')->create($bookmark);
 
-        if($bookmark instanceof Bookmark){
+        if ($bookmark instanceof Bookmark) {
             return new JsonResponse(['id' => $bookmark->getId()], Response::HTTP_CREATED);
         }
-        return new JsonResponse(['id' => $bookmark], Response::HTTP_CREATED);
+        return new JsonResponse(['id' => $bookmark], Response::HTTP_IM_USED);
     }
 
     /**
@@ -149,16 +149,14 @@ class BookmarkApiController extends FOSRestController
      * }
      * ```
      *
-     *
      * @ApiDoc(
      *   resource = true,
      *   statusCodes = {
-     *     200 = "Returned when successful",     *
+     *     200 = "Returned when successful",
      *     404 = "Returned when the page is not found"
      *   },
      *   section = "Bookmarks"
      * )
-     *
      *
      * @ParamConverter("bookmark", class="AppBundle:Bookmark", options={
      *    "repository_method" = "findByUrl",
@@ -173,7 +171,7 @@ class BookmarkApiController extends FOSRestController
      *
      * @Rest\Get("/{url}")
      */
-    public function getBookmarkAction(Bookmark $bookmark) : Response
+    public function getBookmarkAction(Bookmark $bookmark): Response
     {
         $view = $this->view($bookmark, Response::HTTP_OK);
 
@@ -201,8 +199,7 @@ class BookmarkApiController extends FOSRestController
      * @ApiDoc(
      *   resource = true,
      *   statusCodes = {
-     *     201 = "Returned when created",
-     *     226 = "Returned when already exist",
+     *     200 = "Returned when created",
      *     404 = "Returned when the page is not found"
      *   },
      *   section = "Bookmarks"
@@ -218,7 +215,7 @@ class BookmarkApiController extends FOSRestController
      *
      * @Rest\Post("/{bookmark}/comment")
      */
-    public function postBookmarkCommentAction(Request $request, Bookmark $bookmark) : Response
+    public function postBookmarkCommentAction(Request $request, Bookmark $bookmark): Response
     {
         $comment = new Comment();
         $comment->setBookmark($bookmark);
@@ -234,7 +231,6 @@ class BookmarkApiController extends FOSRestController
             }
             throw new \InvalidArgumentException(sprintf('SV170727-1 [%s]', $errorMessage), Response::HTTP_BAD_REQUEST);
         }
-
         $comment = $this->get('comment.manager')->create($comment);
 
         $view = $this->view($comment, Response::HTTP_OK);

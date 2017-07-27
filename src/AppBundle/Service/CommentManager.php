@@ -2,7 +2,6 @@
 
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\Comment;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
